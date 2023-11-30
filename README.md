@@ -1,6 +1,34 @@
-# Huffman Coder README
+# Huffman Coder
 
 This Huffman coder is a program designed to compress and decompress files, developed using Visual Studio 2022 on Windows.
+
+Name: Yunfan He
+Date: 2023/11/21-2023/11/25
+
+## Directory structure
+In src folder, there are 5 class:
+* BinaryReader
+* BinaryWriter
+* FileReader
+* FileWriter
+* Huffman
+
+## Code explanation
+The biggest challenge in this project was implementing the reading of binary files, where reading and writing files require bit-level operations, while the minimum unit of file reading is a byte. This needs to maintain a buffer to handle binary file operations. Additionally, serializing and deserializing Huffman trees was another significant aspect.
+
+In this project, I used RAII (Resource Acquisition Is Initialization) to write all my classes. I believe RAII offers the following two advantages:
+
+Resource Management: RAII ensures effective resource management by guaranteeing resource availability within an object's lifetime and proper release when the object goes out of scope. This includes various resources such as memory, file handles, locks, network connections, etc.
+
+Exception Safety: RAII ensures exception safety by invoking an object's destructor in case of exceptions, ensuring proper resource cleanup and preventing resource leaks. This maintains program consistency, avoiding half-initialized or unhandled resources.
+
+## Simple performance analysis
+In testcase folder, I compress and depress diffrent types of files and compare the size.
+* long text: 1448049 -> 1106153
+* picture: 2023902 -> 2023167
+* single char text: 19 -> 8
+* video 138439KB -> 138096KB
+* pdf 3415KB -> 3367KB
 
 ## Installation and Running
 
@@ -47,7 +75,7 @@ HuffmanCoder.exe -x compressedFileName outputFileName
 
 ### Compressing File Example
 
-Please change directory to testcase and run command below.
+Please change directory to `testcase` and run command below.
 ```shell
 .\HuffmanCoder.exe -c .\picture.png .\compressed\picture
 .\HuffmanCoder.exe -c .\empty.txt .\compressed\empty
